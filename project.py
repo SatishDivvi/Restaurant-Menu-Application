@@ -39,7 +39,7 @@ def newRestaurant():
 # route for editing existing restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit/')
 def editRestaurant(restaurant_id):
-    return 'Page for editing existing restaurant'
+    return render_template('editRestaurant.html', restaurant = restaurant)
 
 # route for deleting existing restaurant
 @app.route('/restaurant/<int:restaurant_id>/delete/')
