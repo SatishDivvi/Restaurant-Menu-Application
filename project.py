@@ -34,7 +34,7 @@ def showRestaurants():
 # route for adding new restaurant
 @app.route('/restaurant/new/')
 def newRestaurant():
-    return 'Page for adding new restaurant'
+    return render_template('newRestaurant.html')
 
 # route for editing existing restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit/')
