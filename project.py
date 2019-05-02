@@ -48,8 +48,17 @@ def editRestaurant(restaurant_id):
         return render_template('editRestaurant.html', restaurant = restaurant)
 
 # route for deleting existing restaurant
-@app.route('/restaurant/<int:restaurant_id>/delete/')
+@app.route('/restaurant/<int:restaurant_id>/delete/', methods = ['GET', 'POST'])
 def deleteRestaurant(restaurant_id):
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    if request.method == 'POST':
+        session.delete(restaurant)
+        session.commit()
+        return redirect(url_for('showRestaurants'))
+    else:
+        return render_template('deleteRestaurant.html', restaurant = restaurant)
     return render_template('deleteRestaurant.html')
 
 # route for viewing restaurant menu's
