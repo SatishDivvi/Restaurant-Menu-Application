@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     </head>
 <body>
 
     <ul>
     {% for restaurant in restaurants %}
 
-    <li>{{ restaurant.name }}</li>
+    <li>{{ restaurant.name }} <a href="{{url_for('editRestaurant', restaurant_id = restaurant.id)}}">Edit</a></li>
     
     {% endfor %}
 </ul>
