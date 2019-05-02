@@ -8,16 +8,17 @@ from database_setup import Base, Restaurant, MenuItem
 
 app = Flask(__name__)
 
-engine = create_engine('sqlite:///restaurant.db')
+engine = create_engine('sqlite:///restaurantmenu.db')
 Base.metadata.bind = engine
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
 
 # route for home page
 @app.route('/')
 @app.route('/restaurant/')
 def showRestaurants():
-    return render_template('restaurants.html')
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    restaurants = session.query(Restaurant).all()
+    return render_template('restaurants.html', restaurants = restaurants)
 
 # route for adding new restaurant
 @app.route('/restaurant/new/')
