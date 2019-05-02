@@ -13,27 +13,54 @@
             <nav class="navbar navbar-expand-lg navbar-dark py-2" style="background-color: #000000;">
             <div class="container-fluid">
             <a class="navbar-brand" href="{{url_for('showRestaurants')}}"><i class="fas fa-utensils"></i> Restaurants</a>
-            </div>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"> <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id = "navbarSupportedContent">
+                <ul class="navbar-nav ml-auto text-white">
+                    <li class="nav-item"><a href="{{url_for('newRestaurant')}}" class="btn btn-success">Add New Restaurant</a></li>
+                </ul>
+            </div>    
+        </div>
             </nav>
         </div>
 
     </header>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-                {% for message in messages %}
-                <li><strong>{{ message }}</strong></li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %}
-    <ul>
-    {% for restaurant in restaurants %}
+    <section class="pt-5 text-white" style="background-color:#000000;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <ul>
+                                {% for message in messages %}
+                                <li><strong>{{ message }}</strong></li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            {% endwith %}
+                </div>
+            </div>
+        </div>
+            
+    </section>
+    <section class="pt-5" style="background-color:#ffffff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-sm-5">
+                    {% for restaurant in restaurants %}
+                    {% if restaurant.name != '' %}
+                    <div class="py-3">
+                    <h4 class="d-block">{{ restaurant.name }}</h4> 
+                    <a class="d-inline btn btn-secondary" href="{{url_for('showMenu', restaurant_id = restaurant.id)}}">View Menus</a></li>
+                    <a class="d-inline btn btn-primary" href="{{url_for('editRestaurant', restaurant_id = restaurant.id)}}">Edit</a> 
+                    <a class="d-inline btn btn-danger" href="{{url_for('deleteRestaurant', restaurant_id = restaurant.id)}}">Delete</a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <li>{{ restaurant.name }} <a href="{{url_for('editRestaurant', restaurant_id = restaurant.id)}}">Edit</a><a href="{{url_for('showMenu', restaurant_id = restaurant.id)}}">View Menus</a></li>
-    
-    {% endfor %}
-</ul>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
