@@ -63,9 +63,9 @@ def editMenuItem(restaurant_id):
     return render_template('editMenuItem.html', item = item, restaurant_id = restaurant_id)
 
 # route for adding new restaurant menu's
-@app.route('/restaurant/<int:restaurant_id>/menu/new')
+@app.route('/restaurant/<int:restaurant_id>/menu/delete')
 def deleteMenuItem(restaurant_id):
-    return 'Page for deleting existing restaurant menu\'s'
+    return render_template('deleteMenuItem.html', item = item, restaurant_id = restaurant_id)
 
 if __name__ == "__main__":
     app.debug = True
