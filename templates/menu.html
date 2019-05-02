@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+<body>
+    <h1>{{restaurant.name}} Menu's</h1>
+    
+    <ul>
+    {% for i in menu  %}
+    <li>{{i.name}}</li>
+    <li>{{i.description}}</li>
+        <li>{{i.price}}</li>
+        <li>{{i.course}}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
