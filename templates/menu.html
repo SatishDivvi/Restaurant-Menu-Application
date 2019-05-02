@@ -4,6 +4,16 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     </head>
 <body>
+    
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+                {% for message in messages %}
+                <li><strong>{{ message }}</strong></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
     <h1>{{restaurant.name}} Menu's</h1>
     <a href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}">Add New Menu</a>
     <ul>
