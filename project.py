@@ -72,14 +72,23 @@ def showMenu(restaurant_id):
     return render_template('menu.html', restaurant = restaurant, menu = items )
 
 # route for adding new restaurant menu's
-@app.route('/restaurant/<int:restaurant_id>/menu/new')
-def newMenuItem(restaurant_id):
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/new')
+def newMenuItem(restaurant_id, menu_id):
     return render_template('newMenuItem.html')
 
 # route for adding new restaurant menu's
-@app.route('/restaurant/<int:restaurant_id>/menu/edit')
-def editMenuItem(restaurant_id):
-    return render_template('editMenuItem.html')
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit', methods = ['GET', 'POST'])
+def editMenuItem(restaurant_id, menu_id):
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    item = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, id = menu_id).one()
+    if request.method == 'POST':
+        item.name = request.form['editMenu']
+        session.add(item)
+        session.commit()
+        return redirect(url_for('showMenu', restaurant_id = restaurant_id))
+    else:
+        return render_template('editMenuItem.html', item = item, restaurant_id = restaurant_id)
 
 # route for adding new restaurant menu's
 @app.route('/restaurant/<int:restaurant_id>/menu/delete')
