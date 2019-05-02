@@ -112,7 +112,7 @@ def newMenuItem(restaurant_id):
     else:
         return render_template('newMenuItem.html', restaurant_id = restaurant_id)
 
-# route for adding new restaurant menu's
+# route for editing restaurant menu's
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit', methods = ['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
     DBSession = sessionmaker(bind=engine)
@@ -127,7 +127,7 @@ def editMenuItem(restaurant_id, menu_id):
     else:
         return render_template('editMenuItem.html', item = item, restaurant_id = restaurant_id)
 
-# route for adding new restaurant menu's
+# route for deleting restaurant menu's
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete', methods = ['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
     DBSession = sessionmaker(bind=engine)
