@@ -8,6 +8,10 @@ from database_setup import Base, Restaurant, MenuItem
 
 app = Flask(__name__)
 
+engine = create_engine('sqlite:///restaurant.db')
+Base.metadata.bind = engine
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
 
 # route for home page
 @app.route('/')
