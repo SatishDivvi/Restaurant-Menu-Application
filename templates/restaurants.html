@@ -24,15 +24,14 @@
         </div>
 
     </header>
-    <section class="pt-5 text-white" style="background-color:#000000;">
+    <section class="pt-5 text-dark" style="background-color:#11F335;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
                         {% with messages = get_flashed_messages() %}
                         {% if messages %}
-                        <ul>
                                 {% for message in messages %}
-                                <li><strong>{{ message }}</strong></li>
+                                <p class="display-5"><strong>{{ message }}</strong></p>
                                 {% endfor %}
                             </ul>
                             {% endif %}
