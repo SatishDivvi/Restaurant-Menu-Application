@@ -79,9 +79,18 @@ def deleteRestaurant(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    try:
+        menuItems = session.query(MenuItem).filter_by(restaurant_id = restaurant.id).one()
+    except:
+        pass
     if request.method == 'POST':
         session.delete(restaurant)
         session.commit()
+        try:
+            session.delete(menuItems)
+            session.commit()
+        except:
+            pass
         flash("Restaurant Successfully Deleted")
         return redirect(url_for('showRestaurants'))
     else:
