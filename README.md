@@ -46,9 +46,9 @@ Also this application provides the ability to add, delete, and modify **restaura
 
     **Note:** _Currently host has been configured as `0.0.0.0` in `project.py` which means the server will be able to reach to all ipv4 addresses in your local machine._
 
-### Results Screenshot:
+### Video Walkthrough:
 
-<img src='https://i.imgur.com/dZjahlY.gif' title='Restaurant Menu Application' width='50%' alt = 'Restaurant Menu Application'/>
+<img src='https://i.imgur.com/dZjahlY.gif' title='Restaurant Menu Application' width='80%' alt = 'Restaurant Menu Application'/>
 
 
 ### Author
