@@ -18,11 +18,26 @@
                 </div>
         
             </header>
-    <h1>Add a New Restaurant</h1>
-    <form action="{{url_for('newRestaurant')}}" method = 'POST' >
-        <input type="text" name="addRestaurant">
-        <input type="Submit" value="Add">
-    </form>
+            <section class="pt-5 mt-3 text-dark" style="background-color:#11F335;"></section>
+            <section class="pt-5" style="background-color:#ffffff;">
+                    <div class="container">
+                        <h1 class="display-4 text-center">Restaurants</h1>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-5 text-center">
+                                <h1>Add a New Restaurant</h1>
+                                <form action="{{url_for('newRestaurant')}}" method = 'POST' >
+                                    <div class="form-group">
+                                    <label for="name">Change Restaurant Name</label>
+                                    <input type="text" class="form-control" id="name" name="addRestaurant" placeholder="Add Restaurant" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Add</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+    
 </ul>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
