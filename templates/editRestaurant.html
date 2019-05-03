@@ -26,7 +26,7 @@
                                     <h1 class="display-4">Edit {{ restaurant.name }} Restaurant</h1>
                                 <form action="{{url_for('editRestaurant', restaurant_id = restaurant.id)}}" method = 'POST' >
                                     <div class="form-group text-left">
-                                    <label for="name" class="font-weight-bold">Change Restaurant Name</label>
+                                    <label for="name" class="font-weight-bold">Change Restaurant Name:</label>
                                     <input type="text" class="form-control" id="name" name="modifyRestaurant" placeholder="{{restaurant.name}}" required>
                                     </div>
                                     <button type="submit" class="btn btn-warning px-5 d-inline">Edit</button>
