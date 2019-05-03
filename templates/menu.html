@@ -18,27 +18,48 @@
                 </div>
         
             </header>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-                {% for message in messages %}
-                <li><strong>{{ message }}</strong></li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %}
-    <h1>{{restaurant.name}} Menu's</h1>
-    <a href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}">Add New Menu</a>
-    <ul>
-    {% for i in menu  %}
-    <li>{{i.name}}</li>
-    <li>{{i.description}}</li>
-        <li>{{i.price}}</li>
-        <li>{{i.course}}</li>
-        <a href="{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}">Edit</a>
-        <a href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}">Delete</a>
-    {% endfor %}
-</ul>
+            <section class="pt-5 mt-3 text-dark" style="background-color:#11F335;">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                    {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                            {% for message in messages %}
+                                            <p class="display-5"><strong>{{ message }}</strong></p>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                        {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+                        
+                </section>
+                <section class="pt-5" style="background-color:#ffffff;">
+                        <div class="container">
+                            <h1 class="display-4 text-center">{{restaurant.name}} Menu's</h1>
+                            <a class="btn btn-success btn-block" href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}">Add New Menu</a>
+                            <div class="row pt-2 pl-3">
+                            {% for i in menu  %}
+                                <div class="col text-center mt-2">
+                                        <div class="card" style="width: 20rem;">
+                                            <div class="card-header">
+                                                    <h5 class="card-title">{{i.name}}</h5>
+                                            </div>
+                                                <div class="card-body">
+                                                  <p class="card-text" >{{i.description[0:50]}}...</p>
+                                                  <p class="card-text">{{i.price}}</p>
+                                                  <p class="card-text">{{i.course}}</p>
+                                                  <a class="d-inline btn btn-primary" href="{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}">Edit</a>
+                                                 <a class="d-inline btn btn-danger" href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}">Delete</a>
+                                                </div>
+                                              </div>
+                                </div>
+                                    {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+  
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
