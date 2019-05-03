@@ -48,7 +48,7 @@ Also this application provides the ability to add, delete, and modify **restaura
 
 ### Results Screenshot:
 
-<img src='https://i.imgur.com/dZjahlY.gifv' title='Restaurant Menu Application' width='50%' alt = 'Restaurant Menu Application'/>
+<img src='https://i.imgur.com/dZjahlY.gif' title='Restaurant Menu Application' width='50%' alt = 'Restaurant Menu Application'/>
 
 
 ### Author
