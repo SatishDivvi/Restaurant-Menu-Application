@@ -44,7 +44,7 @@ Also this application provides the ability to add, delete, and modify **restaura
 - Open your favorite browser and enter `http://localhost:5000` or `http://localhost:127.0.0.1:5000`
 - **Restaurant Menu Application** is now live.
 
-**Note:** _Currently host has been configured as `0.0.0.0` in `project.py` which means the server will be able to reach to all ipv4 addresses in your local machine._
+    **Note:** _Currently host has been configured as `0.0.0.0` in `project.py` which means the server will be able to reach to all ipv4 addresses in your local machine._
 
 ### Results Screenshot:
 
