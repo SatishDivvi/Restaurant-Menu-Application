@@ -128,7 +128,9 @@ def editMenuItem(restaurant_id, menu_id):
     session = DBSession()
     item = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, id = menu_id).one()
     if request.method == 'POST':
-        item.name = request.form['editMenu']
+        item.name = request.form['editMenuName']
+        item.description = request.form['editDescription']
+        item.price = request.form['editPrice']
         session.add(item)
         session.commit()
         flash("Menu Item Successfully Edited")
