@@ -18,6 +18,7 @@
                 </div>
         
             </header>
+            <section class="pt-5 mt-3 text-dark" style="background-color:#11F335;"></section>
     <h1>Edit {{ restaurant.name }} Restaurant</h1>
     <form action="{{url_for('editRestaurant', restaurant_id = restaurant.id)}}" method="POST" >
         <input type="text" name="modifyRestaurant" placeholder="{{restaurant.name}}">
