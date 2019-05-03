@@ -6,7 +6,7 @@ Restaurant Menu Application is a Flask powered application which gives below inf
    1. Restaurants
    2. Menu's of the specific restaurant
 
-Also this application provides the ability to add, delete, and modify **restaurants** and **restaurants** **menu**.
+Also, this application provides the ability to add, delete, and modify **restaurants** and **restaurants** **menu**.
 
 ### Installation
 
