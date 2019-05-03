@@ -11,7 +11,7 @@ Also, this application provides the ability to add, delete, and modify **restaur
 ### Installation
 
 1. Install Vagrant and VirtualBox:
-    - Be sure to instruct the user to install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+    - Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
     - Please fork the repository [VM Configuration](https://github.com/SatishDivvi/fullstack-nanodegree-vm) or download **Vagrantfile** from the repository.
     - Open terminal in *Mac* or *Linux" or GitBash in *Windows*. 
 
