@@ -14,6 +14,15 @@ app = Flask(__name__)
 engine = create_engine('sqlite:///restaurantmenu.db')
 Base.metadata.bind = engine
 
+# Route for login page.
+@app.route('/login')
+def showLogin():
+    state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
+    login_session['state'] = state
+    print(login_session)
+    # return "The Current Session State is {}".format(login_session['state'])
+    return render_template('login.html', STATE = state)
+
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
 def restaurantsJSON():
