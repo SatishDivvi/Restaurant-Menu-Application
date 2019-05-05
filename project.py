@@ -173,7 +173,10 @@ def showRestaurants():
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     restaurants = session.query(Restaurant).all()
-    return render_template('restaurants.html', restaurants=restaurants)
+    if 'username' not in login_session:
+        return render_template('publicRestaurants.html', restaurants=restaurants)
+    else:
+        return render_template('restaurants.html', restaurants=restaurants)
 
 # route for adding new restaurant
 @app.route('/restaurant/new/', methods=['GET', 'POST'])
