@@ -304,6 +304,16 @@ def deleteMenuItem(restaurant_id, menu_id):
         else:
             return render_template('deleteMenuItem.html', item=item, restaurant_id=restaurant_id)
 
+# Create User in Database
+def createUser(login_session):
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    newUser = Users(name = login_session['username'], email = login_session['email'], picture = login_session['picture'])
+    session.add(newUser)
+    session.commit()
+    user = session.query(Users).filter_by(email = login_session['email']).one()
+    return user.id
+
 
 if __name__ == "__main__":
     app.secret_key = 'super_secret_key'
