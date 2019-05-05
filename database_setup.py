@@ -19,6 +19,8 @@ class Restaurant(Base):
     __tablename__ = 'restaurant'
     name = Column(String(80), nullable = False)
     id = Column(Integer, primary_key = True)
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship(Users)
 
     @property
     def serialize(self):
