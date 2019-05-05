@@ -5,6 +5,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
 
+from flask import session as login_session
+import random, string
+
 
 app = Flask(__name__)
 
