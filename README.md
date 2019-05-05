@@ -13,7 +13,7 @@ Also, this application provides the ability to add, delete, and modify **restaur
 1. Install Vagrant and VirtualBox:
     - Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
     - Please fork the repository [VM Configuration](https://github.com/SatishDivvi/fullstack-nanodegree-vm) or download **Vagrantfile** from the repository.
-    - Open terminal in *Mac* or *Linux" or GitBash in *Windows*. 
+    - Open terminal in *Mac* or *Linux* or GitBash in *Windows*. 
 
     **Note (Windows User only):** _please install [GitBash](https://git-scm.com/downloads) if not installed._
 
