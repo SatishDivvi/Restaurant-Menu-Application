@@ -314,6 +314,13 @@ def createUser(login_session):
     user = session.query(Users).filter_by(email = login_session['email']).one()
     return user.id
 
+# Get User Info
+def getUserInfo(user_id):
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    user = session.query(Users).filter_by(id = user_id).one()
+    return user
+
 
 if __name__ == "__main__":
     app.secret_key = 'super_secret_key'
