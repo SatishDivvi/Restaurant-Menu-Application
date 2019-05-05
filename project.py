@@ -217,19 +217,21 @@ def deleteRestaurant(restaurant_id):
         menuItems = session.query(MenuItem).filter_by(restaurant_id=restaurant.id).one()
     except Exception:
         pass
-    if request.method == 'POST':
-        session.delete(restaurant)
-        session.commit()
-        try:
-            session.delete(menuItems)
-            session.commit()
-        except Exception:
-            pass
-        flash("Restaurant Successfully Deleted")
-        return redirect(url_for('showRestaurants'))
+    if 'username' not in login_session:
+        return render_template('login.html')
     else:
-        return render_template('deleteRestaurant.html', restaurant=restaurant)
-    return render_template('deleteRestaurant.html')
+        if request.method == 'POST':
+            session.delete(restaurant)
+            session.commit()
+            try:
+                session.delete(menuItems)
+                session.commit()
+            except Exception:
+                pass
+            flash("Restaurant Successfully Deleted")
+            return redirect(url_for('showRestaurants'))
+        else:
+            return render_template('deleteRestaurant.html', restaurant=restaurant)
 
 # route for viewing restaurant menu's
 @app.route('/restaurant/<int:restaurant_id>/menu/')
@@ -290,13 +292,16 @@ def deleteMenuItem(restaurant_id, menu_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     item = session.query(MenuItem).filter_by(restaurant_id=restaurant_id, id=menu_id).one()
-    if request.method == 'POST':
-        session.delete(item)
-        session.commit()
-        flash("Menu Item Successfully Deleted")
-        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+    if 'username' not in login_session:
+        return render_template('login.html')
     else:
-        return render_template('deleteMenuItem.html', item=item, restaurant_id=restaurant_id)
+        if request.method == 'POST':
+            session.delete(item)
+            session.commit()
+            flash("Menu Item Successfully Deleted")
+            return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+        else:
+            return render_template('deleteMenuItem.html', item=item, restaurant_id=restaurant_id)
 
 
 if __name__ == "__main__":
