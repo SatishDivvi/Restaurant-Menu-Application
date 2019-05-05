@@ -184,16 +184,15 @@ def newRestaurant():
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     if 'username' not in login_session:
-        return render_template('login.html')
+        return redirect(url_for('showLogin'))
+    if request.method == 'POST':
+        newRestaurant = Restaurant(name=request.form['addRestaurant'])
+        session.add(newRestaurant)
+        session.commit()
+        flash("New Restaurant Created")
+        return redirect(url_for('showRestaurants'))
     else:
-        if request.method == 'POST':
-            newRestaurant = Restaurant(name=request.form['addRestaurant'])
-            session.add(newRestaurant)
-            session.commit()
-            flash("New Restaurant Created")
-            return redirect(url_for('showRestaurants'))
-        else:
-            return render_template('newRestaurant.html')
+        return render_template('newRestaurant.html')
 
 # route for editing existing restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
@@ -202,7 +201,7 @@ def editRestaurant(restaurant_id):
     session = DBSession()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     if 'username' not in login_session:
-        return render_template('login.html')
+        return redirect(url_for('showLogin'))
     else:
         if request.method == 'POST':
             restaurant.name = request.form['modifyRestaurant']
@@ -224,7 +223,7 @@ def deleteRestaurant(restaurant_id):
     except Exception:
         pass
     if 'username' not in login_session:
-        return render_template('login.html')
+        return redirect(url_for('showLogin'))
     else:
         if request.method == 'POST':
             session.delete(restaurant)
@@ -258,7 +257,7 @@ def newMenuItem(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     if 'username' not in login_session:
-        return render_template('login.html')
+        return redirect(url_for('showLogin'))
     else:
         if request.method == 'POST':
             newItem = MenuItem(name=request.form['addMenuName'], description=request.form['description'], price=request.form['price'], course=request.form['course'], restaurant_id=restaurant_id)
@@ -276,7 +275,7 @@ def editMenuItem(restaurant_id, menu_id):
     session = DBSession()
     item = session.query(MenuItem).filter_by(restaurant_id=restaurant_id, id=menu_id).one()
     if 'username' not in login_session:
-        return render_template('login.html')
+        return redirect(url_for('showLogin'))
     else:
         if request.method == 'POST':
             item.name = request.form['editMenuName']
@@ -290,8 +289,6 @@ def editMenuItem(restaurant_id, menu_id):
         else:
             return render_template('editMenuItem.html', item=item, restaurant_id=restaurant_id)
 
-    
-
 # route for deleting restaurant menu's
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete', methods=['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
@@ -299,7 +296,7 @@ def deleteMenuItem(restaurant_id, menu_id):
     session = DBSession()
     item = session.query(MenuItem).filter_by(restaurant_id=restaurant_id, id=menu_id).one()
     if 'username' not in login_session:
-        return render_template('login.html')
+        return redirect(url_for('showLogin'))
     else:
         if request.method == 'POST':
             session.delete(item)
