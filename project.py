@@ -334,7 +334,7 @@ def getUserID(email):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     try:
-        user = session.qyery(Users).filter_by(email = email).one()
+        user = session.query(Users).filter_by(email = email).one()
         return user.id
     except Exception:
         return None
