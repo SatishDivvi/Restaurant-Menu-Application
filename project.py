@@ -316,17 +316,17 @@ def deleteMenuItem(restaurant_id, menu_id):
 def createUser(login_session):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
-    newUser = Users(name = login_session['username'], email = login_session['email'], picture = login_session['picture'])
+    newUser = Users(name=login_session['username'], email=login_session['email'], picture=login_session['picture'])
     session.add(newUser)
     session.commit()
-    user = session.query(Users).filter_by(email = login_session['email']).one()
+    user = session.query(Users).filter_by(email=login_session['email']).one()
     return user.id
 
 # Get User Info
 def getUserInfo(user_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
-    user = session.query(Users).filter_by(id = user_id).one()
+    user = session.query(Users).filter_by(id=user_id).one()
     return user
 
 # Get User ID
@@ -334,7 +334,7 @@ def getUserID(email):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     try:
-        user = session.query(Users).filter_by(email = email).one()
+        user = session.query(Users).filter_by(email=email).one()
         return user.id
     except Exception:
         return None
