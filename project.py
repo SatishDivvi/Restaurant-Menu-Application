@@ -198,14 +198,17 @@ def editRestaurant(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    if request.method == 'POST':
-        restaurant.name = request.form['modifyRestaurant']
-        session.add(restaurant)
-        session.commit()
-        flash("Restaurant Successfully Edited")
-        return redirect(url_for('showRestaurants'))
+    if 'username' not in login_session:
+        return render_template('login.html')
     else:
-        return render_template('editRestaurant.html', restaurant=restaurant)
+        if request.method == 'POST':
+            restaurant.name = request.form['modifyRestaurant']
+            session.add(restaurant)
+            session.commit()
+            flash("Restaurant Successfully Edited")
+            return redirect(url_for('showRestaurants'))
+        else:
+            return render_template('editRestaurant.html', restaurant=restaurant)
 
 # route for deleting existing restaurant
 @app.route('/restaurant/<int:restaurant_id>/delete/', methods=['GET', 'POST'])
