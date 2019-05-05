@@ -249,14 +249,17 @@ def showMenu(restaurant_id):
 def newMenuItem(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
-    if request.method == 'POST':
-        newItem = MenuItem(name=request.form['addMenuName'], description=request.form['description'], price=request.form['price'], course=request.form['course'], restaurant_id=restaurant_id)
-        session.add(newItem)
-        session.commit()
-        flash("Menu Item Created")
-        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+    if 'username' not in login_session:
+        return render_template('login.html')
     else:
-        return render_template('newMenuItem.html', restaurant_id=restaurant_id)
+        if request.method == 'POST':
+            newItem = MenuItem(name=request.form['addMenuName'], description=request.form['description'], price=request.form['price'], course=request.form['course'], restaurant_id=restaurant_id)
+            session.add(newItem)
+            session.commit()
+            flash("Menu Item Created")
+            return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+        else:
+            return render_template('newMenuItem.html', restaurant_id=restaurant_id)
 
 # route for editing restaurant menu's
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit', methods=['GET', 'POST'])
