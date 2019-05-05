@@ -254,9 +254,9 @@ def showMenu(restaurant_id):
 def newMenuItem(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
+    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     if 'username' not in login_session:
         return redirect(url_for('showLogin'))
-    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     else:
         if request.method == 'POST':
             newItem = MenuItem(name=request.form['addMenuName'], description=request.form['description'], price=request.form['price'], course=request.form['course'], restaurant_id=restaurant_id, user_id=restaurant.user_id)
