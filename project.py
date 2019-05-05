@@ -184,7 +184,7 @@ def newRestaurant():
     if 'username' not in login_session:
         return redirect(url_for('showLogin'))
     if request.method == 'POST':
-        newRestaurant = Restaurant(name=request.form['addRestaurant'])
+        newRestaurant = Restaurant(name=request.form['addRestaurant'], user_id=login_session['user_id'])
         session.add(newRestaurant)
         session.commit()
         flash("New Restaurant Created")
@@ -256,9 +256,10 @@ def newMenuItem(restaurant_id):
     session = DBSession()
     if 'username' not in login_session:
         return redirect(url_for('showLogin'))
+    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     else:
         if request.method == 'POST':
-            newItem = MenuItem(name=request.form['addMenuName'], description=request.form['description'], price=request.form['price'], course=request.form['course'], restaurant_id=restaurant_id)
+            newItem = MenuItem(name=request.form['addMenuName'], description=request.form['description'], price=request.form['price'], course=request.form['course'], restaurant_id=restaurant_id, user_id=restaurant.user_id)
             session.add(newItem)
             session.commit()
             flash("Menu Item Created")
