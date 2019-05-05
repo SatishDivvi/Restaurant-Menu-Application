@@ -321,6 +321,15 @@ def getUserInfo(user_id):
     user = session.query(Users).filter_by(id = user_id).one()
     return user
 
+# Get User ID
+def getUserID(email):
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    try:
+        user = session.qyery(Users).filter_by(email = email).one()
+        return user.id
+    except Exception:
+        return None
 
 if __name__ == "__main__":
     app.secret_key = 'super_secret_key'
