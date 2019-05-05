@@ -183,14 +183,17 @@ def showRestaurants():
 def newRestaurant():
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
-    if request.method == 'POST':
-        newRestaurant = Restaurant(name=request.form['addRestaurant'])
-        session.add(newRestaurant)
-        session.commit()
-        flash("New Restaurant Created")
-        return redirect(url_for('showRestaurants'))
+    if 'username' not in login_session:
+        return render_template('login.html')
     else:
-        return render_template('newRestaurant.html')
+        if request.method == 'POST':
+            newRestaurant = Restaurant(name=request.form['addRestaurant'])
+            session.add(newRestaurant)
+            session.commit()
+            flash("New Restaurant Created")
+            return redirect(url_for('showRestaurants'))
+        else:
+            return render_template('newRestaurant.html')
 
 # route for editing existing restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
