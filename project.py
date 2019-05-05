@@ -267,17 +267,22 @@ def editMenuItem(restaurant_id, menu_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     item = session.query(MenuItem).filter_by(restaurant_id=restaurant_id, id=menu_id).one()
-    if request.method == 'POST':
-        item.name = request.form['editMenuName']
-        item.description = request.form['editDescription']
-        item.price = request.form['editPrice']
-        item.course = request.form['course']
-        session.add(item)
-        session.commit()
-        flash("Menu Item Successfully Edited")
-        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+    if 'username' not in login_session:
+        return render_template('login.html')
     else:
-        return render_template('editMenuItem.html', item=item, restaurant_id=restaurant_id)
+        if request.method == 'POST':
+            item.name = request.form['editMenuName']
+            item.description = request.form['editDescription']
+            item.price = request.form['editPrice']
+            item.course = request.form['course']
+            session.add(item)
+            session.commit()
+            flash("Menu Item Successfully Edited")
+            return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+        else:
+            return render_template('editMenuItem.html', item=item, restaurant_id=restaurant_id)
+
+    
 
 # route for deleting restaurant menu's
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete', methods=['GET', 'POST'])
