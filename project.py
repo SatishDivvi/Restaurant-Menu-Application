@@ -303,14 +303,13 @@ def deleteMenuItem(restaurant_id, menu_id):
     item = session.query(MenuItem).filter_by(restaurant_id=restaurant_id, id=menu_id).one()
     if 'username' not in login_session:
         return redirect(url_for('showLogin'))
+    if request.method == 'POST':
+        session.delete(item)
+        session.commit()
+        flash("Menu Item Successfully Deleted")
+        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
-        if request.method == 'POST':
-            session.delete(item)
-            session.commit()
-            flash("Menu Item Successfully Deleted")
-            return redirect(url_for('showMenu', restaurant_id=restaurant_id))
-        else:
-            return render_template('deleteMenuItem.html', item=item, restaurant_id=restaurant_id)
+        return render_template('deleteMenuItem.html', item=item, restaurant_id=restaurant_id)
 
 # Create User in Database
 def createUser(login_session):
