@@ -227,19 +227,20 @@ def deleteRestaurant(restaurant_id):
         pass
     if 'username' not in login_session:
         return redirect(url_for('showLogin'))
-    else:
-        if request.method == 'POST':
-            session.delete(restaurant)
+    if restaurant.user_id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not authorized to delete this restaurant. Please create your own restaurant in order to delete.');}</script><body onload='myFunction()'>"
+    if request.method == 'POST':
+        session.delete(restaurant)
+        session.commit()
+        try:
+            session.delete(menuItems)
             session.commit()
-            try:
-                session.delete(menuItems)
-                session.commit()
-            except Exception:
-                pass
-            flash("Restaurant Successfully Deleted")
-            return redirect(url_for('showRestaurants'))
-        else:
-            return render_template('deleteRestaurant.html', restaurant=restaurant)
+        except Exception:
+            pass
+        flash("Restaurant Successfully Deleted")
+        return redirect(url_for('showRestaurants'))
+    else:
+        return render_template('deleteRestaurant.html', restaurant=restaurant)
 
 # route for viewing restaurant menu's
 @app.route('/restaurant/<int:restaurant_id>/menu/')
