@@ -30,6 +30,8 @@ Also, this application provides the ability to add, delete, and modify **restaur
 
 ### OAuth Setup - Google
 
+This section is mandatory for Google+ Signin in order to restrict unauthorized users from adding, deleting or modifying restaurants and their menus. This also provides authentication making users mandatory to sign in for admin privileges:
+
 1. Create Client ID and Client Secret:
     - Go to [Google Console](https://console.developers.google.com/apis)
     - Choose **Credentials** from the menu on the left.
