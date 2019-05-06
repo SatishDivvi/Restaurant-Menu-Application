@@ -28,6 +28,22 @@ Also, this application provides the ability to add, delete, and modify **restaur
 
     **Note:** _The folders and files structure should be same as seen in this repository._
 
+### OAuth Setup - Google
+
+1. Create Client ID and Client Secret:
+    - Go to [Google Console](https://console.developers.google.com/apis)
+    - Choose **Credentials** from the menu on the left.
+    - Create an **OAuth Client ID**.
+    - Click on **Configure Consent Screen**.
+    - Give a valid name to the application.
+    - Add appropriate javascript origins. For this project it should be `http://localhost:5000` or `http://127.0.0.1:5000`.
+    - Add appropriate javascript redirects. For this project it should be `http://localhost:5000/login` and `http://localhost:5000/gconnect`.
+    - After the consent screen please select **Web application** as the Application Type.
+    - Click on the name of the app and **Client ID**, **Client Secret** can be viewed.
+    - Download JSON file by clicking on **DOWNLOAD JSON** button and name the file as **client_secrets.json**.
+    - Move **client_secrets.json** file to `/vagrant` folder.
+
+
 4. Setup Database and feed data into the database:
     - Execute below commands in the same order and wait for each command to complete execution:
 
