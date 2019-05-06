@@ -45,6 +45,7 @@ This section is mandatory for Google+ Signin in order to restrict unauthorized u
     - Download JSON file by clicking on **DOWNLOAD JSON** button and name the file as **client_secrets.json**.
     - Move **client_secrets.json** file to `/vagrant` folder.
 
+    **Note:** *`client_secrets.json` file in this repository is only for you to check on how your json file should look. Please do not use this file as i have removed my `CLIENT_ID` and `CLIENT_SECRET`.*
 
 4. Setup Database and feed data into the database:
     - Execute below commands in the same order and wait for each command to complete execution:
