@@ -148,7 +148,11 @@ def gdisconnect():
 # Route for Facebook Login
 @app.route('/fbconnect', methods = ['POST'])
 def fbconnect():
-    return None
+    if request.args.get('state') != login_session['state']:
+        response = make_response(json.dumps('Invalid state parameter.'), 401)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+    access_token = request.data
 
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
