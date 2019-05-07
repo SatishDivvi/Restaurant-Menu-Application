@@ -162,6 +162,16 @@ def fbconnect():
     result = h.request(url, 'GET')[1]
     token = result.split(',')[0].split(':')[1].replace('"', '')
 
+    url = 'https://graph.facebook.com/v2.8/me?access_token=%s&fields=name,id,email' % token
+    h = httplib2.Http()
+    result = h.request(url, 'GET')[1]
+
+    data = json.loads(result)
+    login_session['provider'] = 'facebook'
+    login_session['username'] = data["name"]
+    login_session['email'] = data["email"]
+    login_session['facebook_id'] = data["id"]
+    login_session['access_token'] = token
     
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
