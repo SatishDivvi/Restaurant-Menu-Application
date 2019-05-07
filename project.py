@@ -145,6 +145,11 @@ def gdisconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
 
+# Route for Facebook Login
+@app.route('/fbconnect')
+def fbconnect():
+    return None
+
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
 def restaurantsJSON():
