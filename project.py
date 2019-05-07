@@ -184,6 +184,16 @@ def fbconnect():
     if user_id is None:
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
+
+    output = ''
+    output += '<h1>Welcome, '
+    output += login_session['username']
+    output += '!</h1>'
+    output += '<img src="'
+    output += login_session['picture']
+    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+    flash("you are now logged in as {}".format(login_session['username']))
+    return output
     
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
