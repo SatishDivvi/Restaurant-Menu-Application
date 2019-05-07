@@ -146,7 +146,7 @@ def gdisconnect():
         return response
 
 # Route for Facebook Login
-@app.route('/fbconnect'. methods = ['POST'])
+@app.route('/fbconnect', methods = ['POST'])
 def fbconnect():
     return None
 
