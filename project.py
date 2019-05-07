@@ -125,6 +125,8 @@ def gconnect():
 def gdisconnect():
     print(login_session)
     access_token = login_session.get('access_token')
+    if 'provider' in login_session:
+        return 'Hello World'
     if access_token is None:
         response = make_response(json.dumps('Current user not connected.'), 401)
         response.headers['Content-Type'] = 'application/json'
@@ -194,6 +196,10 @@ def fbconnect():
     output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
     flash("you are now logged in as {}".format(login_session['username']))
     return output
+
+@app.route('/fbdisconnect')
+def fbdisconnect():
+    return "Hello World"
     
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
