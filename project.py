@@ -162,6 +162,7 @@ def fbconnect():
     result = h.request(url, 'GET')[1]
     token = result.split(',')[0].split(':')[1].replace('"', '')
 
+    
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
 def restaurantsJSON():
