@@ -179,6 +179,11 @@ def fbconnect():
     data = json.loads(result)
     
     login_session['picture'] = data["data"]["url"]
+
+    user_id = getUserID(login_session['email'])
+    if user_id is None:
+        user_id = createUser(login_session)
+    login_session['user_id'] = user_id
     
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
