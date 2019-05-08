@@ -92,7 +92,6 @@ This section is mandatory for Facebook Signin in order to restrict unauthorized 
 
 <img src='https://i.imgur.com/dZjahlY.gif' title='Restaurant Menu Application' width='80%' alt = 'Restaurant Menu Application'/>
 
-
 ### Author
 
 Divvi Naga Venkata Satish - [Portfolio](https://satishdivvi.github.io)
