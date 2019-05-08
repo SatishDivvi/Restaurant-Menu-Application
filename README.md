@@ -47,16 +47,6 @@ This section is mandatory for Google+ Signin in order to restrict unauthorized u
 
     **Note:** *`client_secrets.json` file in this repository is only for you to check on how your json file should look. Please do not use this file as i have removed my `CLIENT_ID` and `CLIENT_SECRET`.*
 
-4. Setup Database and feed data into the database:
-    - Execute below commands in the same order and wait for each command to complete execution:
-
-        ```python
-        python database_setup.py
-        python lotsofmenu.py
-        ```
-    
-    **Note:** _You can create your own data by using `add_restaurant_data.py` file or you can also add more restaurants and menus in `lotsofmenu.py` file._
-
 ### Oauth Setup - Facebook
 
 This section is mandatory for Facebook Signin in order to restrict unauthorized users from adding, deleting or modifying restaurants and their menus. This also provides authentication making users mandatory to sign in for admin privileges:
@@ -81,6 +71,16 @@ This section is mandatory for Facebook Signin in order to restrict unauthorized 
     5. [permissions](https://developers.facebook.com/docs/facebook-login/web/permissions)
 
 ### Project Execution:
+
+ - Setup Database and feed data into the database:
+    - Execute below commands in the same order and wait for each command to complete execution:
+
+        ```python
+        python database_setup.py
+        python lotsofmenu.py
+        ```
+    
+    **Note:** _You can create your own data by using `add_restaurant_data.py` file or you can also add more restaurants and menus in `lotsofmenu.py` file._
 
 - Execute command `python project.py` and with this server is now running at **localhost 5000**.
 - Open your favorite browser and enter `http://localhost:5000` or `http://localhost:127.0.0.1:5000`
