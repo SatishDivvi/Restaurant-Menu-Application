@@ -56,7 +56,12 @@ This section is mandatory for Google+ Signin in order to restrict unauthorized u
         ```
     
     **Note:** _You can create your own data by using `add_restaurant_data.py` file or you can also add more restaurants and menus in `lotsofmenu.py` file._
-    
+
+### Oauth Setup - Facebook
+
+This section is mandatory for Facebook Signin in order to restrict unauthorized users from adding, deleting or modifying restaurants and their menus. This also provides authentication making users mandatory to sign in for admin privileges:
+
+
 ### Project Execution:
 
 - Execute command `python project.py` and with this server is now running at **localhost 5000**.
