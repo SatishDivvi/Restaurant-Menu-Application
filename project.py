@@ -38,7 +38,7 @@ def showLogin():
 # Route for Google+ Connection
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
-    """Connects with Google OAuth for Authentication"""
+    """Connects with Google OAuth for Authentication and creates login session"""
     # Validate state token
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
@@ -127,6 +127,7 @@ def gconnect():
 # Route for Google+ Disconnection
 @app.route('/gdisconnect')
 def gdisconnect():
+    """Request users to login using third party OAuth - Google and Facebook."""
     print(login_session)
     access_token = login_session.get('access_token')
     if 'provider' in login_session:
