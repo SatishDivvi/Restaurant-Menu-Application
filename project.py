@@ -38,6 +38,7 @@ def showLogin():
 # Route for Google+ Connection
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
+    """Connects with Google OAuth for Authentication"""
     # Validate state token
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
