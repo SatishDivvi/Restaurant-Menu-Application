@@ -205,6 +205,7 @@ def fbconnect():
 
 @app.route('/fbdisconnect')
 def fbdisconnect():
+    """Delete the login session and disconnect using Facebook OAuth"""
     facebook_id = login_session['facebook_id']
     access_token = login_session['access_token']
     if 'provider' not in login_session:
