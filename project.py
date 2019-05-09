@@ -272,6 +272,7 @@ def editRestaurant(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    creator = getUserInfo(restaurant.user_id)
     if 'username' not in login_session:
         return redirect(url_for('showLogin'))
     else:
@@ -282,6 +283,8 @@ def editRestaurant(restaurant_id):
             flash("Restaurant Successfully Edited")
             return redirect(url_for('showRestaurants'))
         else:
+            if creator.id != login_session['user_id']:
+                return render_template('publicEditRestaurant.html', restaurant=restaurant)
             return render_template('editRestaurant.html', restaurant=restaurant)
 
 # route for deleting existing restaurant
