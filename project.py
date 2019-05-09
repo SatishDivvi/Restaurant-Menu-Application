@@ -26,6 +26,7 @@ Base.metadata.bind = engine
 # Route for login page
 @app.route('/login')
 def showLogin():
+    """Request users to login using third party OAuth - Google and Facebook."""
     if 'username' in login_session:
         return redirect(url_for('showRestaurants'))
     state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
