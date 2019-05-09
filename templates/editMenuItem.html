@@ -27,15 +27,15 @@
                                     <form action="{{url_for('editMenuItem', restaurant_id = restaurant_id, menu_id = item.id)}}" method = 'POST' >
                                         <div class="form-group text-left">
                                         <label for="name" class="font-weight-bold">Name:</label>
-                                        <input type="text" size=30 class="form-control" id="name" name="editMenuName" placeholder = '{{item.name}}' required>
+                                        <input type="text" size=30 class="form-control" id="name" name="editMenuName" placeholder = '{{item.name}}'>
                                         </div>
                                         <div class="form-group text-left">
                                                 <label for="description" class="font-weight-bold">Description:</label>
-                                                <input rows=3 cols=50 type="text" class="form-control" id="description" name="editDescription" placeholder = '{{item.description}}' required>
+                                                <input rows=3 cols=50 type="text" class="form-control" id="description" name="editDescription" placeholder = '{{item.description}}'>
                                                 </div>
                                                 <div class="form-group text-left">
                                                         <label for="price" class="font-weight-bold">Price:</label>
-                                                        <input type="text" size=30 class="form-control" id="price" name="editPrice" placeholder = '{{item.price}}' required>
+                                                        <input type="text" size=30 class="form-control" id="price" name="editPrice" placeholder = '{{item.price}}'>
                                                         </div>
                                                         <div class="form-group text-left">
                                                                 <label for="Course" class="font-weight-bold">Course Type:</label>
