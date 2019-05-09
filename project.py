@@ -224,6 +224,7 @@ def fbdisconnect():
 # JSON Get Request for Restaurants
 @app.route('/restaurant/JSON')
 def restaurantsJSON():
+    """Prints restaurants in json format"""
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     restaurants = session.query(Restaurant).all()
