@@ -155,6 +155,7 @@ def gdisconnect():
 # Route for Facebook Login
 @app.route('/fbconnect', methods = ['POST'])
 def fbconnect():
+    """Connects with Facebook OAuth for Authentication and creates login session"""
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
