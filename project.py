@@ -127,7 +127,7 @@ def gconnect():
 # Route for Google+ Disconnection
 @app.route('/gdisconnect')
 def gdisconnect():
-    """Request users to login using third party OAuth - Google and Facebook."""
+    """Delete the login session and disconnect using Google OAuth"""
     print(login_session)
     access_token = login_session.get('access_token')
     if 'provider' in login_session:
