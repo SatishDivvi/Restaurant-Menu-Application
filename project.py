@@ -353,10 +353,14 @@ def editMenuItem(restaurant_id, menu_id):
         return redirect(url_for('showLogin'))
     else:
         if request.method == 'POST':
-            item.name = request.form['editMenuName']
-            item.description = request.form['editDescription']
-            item.price = request.form['editPrice']
-            item.course = request.form['course']
+            if request.form['editMenuName']:
+                item.name = request.form['editMenuName']
+            if request.form['editDescription']:
+                item.description = request.form['editDescription']
+            if request.form['editPrice']:
+                item.price = request.form['editPrice']
+            if request.form['course']:
+                item.course = request.form['course']
             session.add(item)
             session.commit()
             flash("Menu Item Successfully Edited")
